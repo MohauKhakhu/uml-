@@ -1,0 +1,26 @@
+graph TD
+    A[POS System] --> B[User Interface Component]
+    A --> C[Business Logic Component]
+    A --> D[Data Access Component]
+    
+    B --> B1[Sale UI Module]
+    B --> B2[Inventory UI Module]
+    B --> B3[Reports UI Module]
+    
+    C --> C1[Sale Management]
+    C --> C2[Inventory Management]
+    C --> C3[Payment Processing]
+    C --> C4[Report Generation]
+    
+    D --> D1[Database Connector]
+    D --> D2[ORM Layer]
+    
+    E[External Systems] --> F[Payment Gateway]
+    E --> G[Barcode Scanners]
+    E --> H[Receipt Printers]
+    E --> I[Card Readers]
+    
+    C3 --> F
+    B1 --> G
+    B1 --> H
+    B1 --> I
