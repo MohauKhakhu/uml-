@@ -1,0 +1,25 @@
+graph TD
+    A[Start Payment Process] --> B{Select Payment Method}
+    B -->|Cash| C[Enter Cash Amount]
+    B -->|Credit Card| D[Swipe/Tap Card]
+    B -->|Debit Card| D
+    B -->|Gift Card| E[Scan Gift Card]
+    
+    C --> F[Calculate Change]
+    F --> G[Process Payment]
+    
+    D --> H[Authorize Payment]
+    H --> I{Authorization Successful?}
+    I -->|Yes| G
+    I -->|No| J[Display Error]
+    
+    E --> K[Validate Balance]
+    K --> L{Sufficient Balance?}
+    L -->|Yes| G
+    L -->|No| M[Insufficient Balance]
+    
+    J --> B
+    M --> B
+    G --> N[Update Sale Status]
+    N --> O[Print Receipt]
+    O --> P[End Payment Process]
