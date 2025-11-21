@@ -1,0 +1,81 @@
+classDiagram
+    class Store {
+        -String storeId
+        -String name
+        -String address
+        -String phone
+        +processSale()
+        +generateReport()
+    }
+    
+    class Product {
+        -String productId
+        -String name
+        -String description
+        -Double price
+        -Integer stockQuantity
+        -String category
+        +updateStock()
+        +getPrice()
+    }
+    
+    class Sale {
+        -String saleId
+        -Date saleDate
+        -Double totalAmount
+        -String status
+        +calculateTotal()
+        +processPayment()
+        +addLineItem()
+    }
+    
+    class SaleLineItem {
+        -Integer quantity
+        -Double subtotal
+        +calculateSubtotal()
+    }
+    
+    class Payment {
+        -String paymentId
+        -Double amount
+        -String paymentMethod
+        -String status
+        +processPayment()
+        +validatePayment()
+    }
+    
+    class Customer {
+        -String customerId
+        -String name
+        -String email
+        -String phone
+        -Integer loyaltyPoints
+        +addLoyaltyPoints()
+    }
+    
+    class Employee {
+        -String employeeId
+        -String name
+        -String role
+        -String loginId
+        -String password
+        +login()
+        +processSale()
+    }
+    
+    class Inventory {
+        -Map<Product, Integer> stock
+        +addProduct()
+        +updateStock()
+        +checkLowStock()
+        +generateInventoryReport()
+    }
+    
+    Store "1" -- "*" Sale : contains
+    Store "1" -- "1" Inventory : manages
+    Sale "1" -- "*" SaleLineItem : contains
+    Sale "1" -- "1" Payment : has
+    Sale "1" -- "0..1" Customer : involves
+    Sale "1" -- "1" Employee : processedBy
+    SaleLineItem "1" -- "1" Product : references
+    Inventory "1" -- "*" Product : contains
