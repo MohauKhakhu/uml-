@@ -1,0 +1,18 @@
+graph TD
+    A[POS Client Device] --> B[Application Server]
+    B --> C[Database Server]
+    B --> D[Payment Gateway]
+    
+    A1[Register 1 - iPad] --> B
+    A2[Register 2 - iPad] --> B
+    A3[Back Office PC] --> B
+    A4[Manager Tablet] --> B
+    
+    C --> C1[(Primary Database)]
+    C --> C2[(Backup Database)]
+    
+    D --> D1[Credit Card Processor]
+    D --> D2[Bank Network]
+    
+    E[Cloud Storage] --> F[Backup Service]
+    B --> E
