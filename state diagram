@@ -1,0 +1,18 @@
+stateDiagram-v2
+    [*] --> Created
+    Created --> InProgress : addItem()
+    InProgress --> InProgress : addItem()
+    InProgress --> PaymentPending : completeSale()
+    PaymentPending --> Paid : processPayment()
+    PaymentPending --> Cancelled : cancelSale()
+    Paid --> Refunded : processRefund()
+    Paid --> [*]
+    Refunded --> [*]
+    Cancelled --> [*]
+    
+    state InProgress {
+        [*] --> ItemsAdded
+        ItemsAdded --> Calculating : calculateTotal()
+        Calculating --> ItemsAdded : modifyItems()
+        Calculating --> [*]
+    }
