@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant C as Cashier
+    participant POS as POS System
+    participant I as Inventory
+    participant P as PaymentProcessor
+    participant R as ReceiptPrinter
+    
+    C->>POS: Start New Sale
+    POS-->>C: Sale Created
+    
+    loop For Each Item
+        C->>POS: Scan Product
+        POS->>I: Check Stock Availability
+        I-->>POS: Stock Available
+        POS->>POS: Add to Cart
+        POS-->>C: Update Display
+    end
+    
+    C->>POS: Complete Sale
+    POS->>POS: Calculate Total
+    POS-->>C: Display Total
+    
+    C->>POS: Process Payment
+    POS->>P: Authorize Payment
+    P-->>POS: Payment Approved
+    POS->>I: Update Inventory
+    POS->>R: Print Receipt
+    POS-->>C: Sale Complete
