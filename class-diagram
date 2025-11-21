@@ -1,0 +1,27 @@
+graph TD
+    A[Point of Sale System] --> B[Cashier]
+    A --> C[Manager]
+    A --> D[Customer]
+    A --> E[System Administrator]
+    
+    B --> F[Process Sale]
+    B --> G[Handle Returns]
+    B --> H[Manage Customer]
+    B --> I[Generate Receipt]
+    
+    C --> J[View Reports]
+    C --> K[Manage Inventory]
+    C --> L[Manage Employees]
+    C --> M[Apply Discounts]
+    
+    E --> N[System Configuration]
+    E --> O[User Management]
+    E --> P[Database Backup]
+    
+    F --> Q[Scan Products]
+    F --> R[Process Payment]
+    F --> S[Calculate Total]
+    
+    K --> T[Add New Product]
+    K --> U[Update Stock]
+    K --> V[Set Reorder Levels]
